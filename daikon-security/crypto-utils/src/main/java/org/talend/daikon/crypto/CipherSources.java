@@ -99,7 +99,7 @@ public class CipherSources {
 
         private int ivLength;
 
-        SymmetricKeyCipherSource(int ivLength) {
+        public SymmetricKeyCipherSource(int ivLength) {
             this.ivLength = ivLength;
         }
 
