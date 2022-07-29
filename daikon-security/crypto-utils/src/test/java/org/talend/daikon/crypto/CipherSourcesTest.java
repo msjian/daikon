@@ -8,7 +8,6 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.jupiter.api.Test;
 
 import javax.crypto.AEADBadTagException;
-import javax.crypto.BadPaddingException;
 import java.util.Base64;
 
 public class CipherSourcesTest {
@@ -69,46 +68,6 @@ public class CipherSourcesTest {
     }
 
     @Test
-    public void shouldGenerateDifferentValuesWithBlowfish() throws Exception {
-        final CipherSource source = CipherSources.blowfish();
-        final String encrypt1 = source.encrypt(KeySources.machineUID(16), "String");
-        final String encrypt2 = source.encrypt(KeySources.machineUID(16), "String");
-
-        assertNotEquals(encrypt1, encrypt2);
-    }
-
-    @Test
-    public void blowfishUnableToDecrypt() throws Exception {
-        assertThrows(BadPaddingException.class, () -> {
-            String aWonderfulString = "aWonderfulString";
-
-            final Encryption encryptionAES = new Encryption(KeySources.machineUID(16), CipherSources.aes());
-            String encryptedAESString = encryptionAES.encrypt(aWonderfulString);
-
-            final Encryption encryptionBlowfish = new Encryption(KeySources.machineUID(16), CipherSources.blowfish());
-
-            encryptionBlowfish.decrypt(encryptedAESString);
-        });
-    }
-
-    @Test
-    public void shouldRoundtripWithBlowfish() throws Exception {
-        assertRoundTrip(CipherSources.blowfish());
-    }
-
-    @Test
-    public void shouldRoundtripWithBlowfishAndBouncyCastle() throws Exception {
-        assertRoundTrip(CipherSources.blowfish(new BouncyCastleProvider()));
-    }
-
-    @Test
-    public void changeIVEncryptionStringBlowfish() throws Exception {
-        String expectedString = "aStringWithBlowfish";
-        String badEncryptedString = changeIVEncryptionString(expectedString, CipherSources.blowfish());
-        assertNotEquals(expectedString, badEncryptedString);
-    }
-
-    @Test
     public void changeIVEncryptionStringAESGCM() throws Exception {
         assertThrows(AEADBadTagException.class, () -> {
             changeIVEncryptionString("aWonderfulString", CipherSources.aesGcm(16));
@@ -126,13 +85,6 @@ public class CipherSourcesTest {
 
         // check that decryption
         return encryption.decrypt(Base64.getEncoder().encodeToString(encryptedBytes));
-    }
-
-    @Test
-    public void changeEncryptedPayloadStringBlowfish() throws Exception {
-        String expectedString = "changePayloadStringWithBlowfish";
-        String badEncryptedResult = changeEncryptedPayloadString(expectedString, CipherSources.blowfish());
-        assertNotEquals(expectedString, badEncryptedResult);
     }
 
     @Test

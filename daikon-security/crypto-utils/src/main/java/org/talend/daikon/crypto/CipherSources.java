@@ -5,12 +5,10 @@ import static org.talend.daikon.crypto.EncodingUtils.BASE64_ENCODER;
 
 import java.security.Key;
 import java.security.Provider;
-import java.security.spec.AlgorithmParameterSpec;
 import java.util.stream.Stream;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.GCMParameterSpec;
-import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
@@ -97,35 +95,7 @@ public class CipherSources {
         };
     }
 
-    /**
-     * @return A {@link CipherSource} using Blowfish encryption.
-     */
-    public static CipherSource blowfish() throws Exception {
-        return blowfish(null);
-    }
-
-    /**
-     * @return A {@link CipherSource} using Blowfish encryption and the given Provider.
-     */
-    public static CipherSource blowfish(Provider p) throws Exception {
-        int ivLength = 8; // blowfish uses 64bits only
-
-        return new SymmetricKeyCipherSource(ivLength) {
-
-            @Override
-            protected Cipher get(KeySource source, int encryptMode, byte[] iv) throws Exception {
-                final Cipher c = p != null ? Cipher.getInstance("Blowfish/CBC/PKCS5Padding", p)
-                        : Cipher.getInstance("Blowfish/CBC/PKCS5Padding");
-                final byte[] sourceKey = source.getKey();
-                final Key key = new SecretKeySpec(sourceKey, "Blowfish");
-                AlgorithmParameterSpec spec = new IvParameterSpec(iv);
-                c.init(encryptMode, key, spec);
-                return c;
-            }
-        };
-    }
-
-    private abstract static class SymmetricKeyCipherSource implements CipherSource {
+    public abstract static class SymmetricKeyCipherSource implements CipherSource {
 
         private int ivLength;
 
