@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -30,6 +31,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.talend.daikon.multitenant.provider.TenantProvider;
 import org.talend.daikon.multitenant.web.TenantIdentificationStrategy;
+import org.talend.daikon.spring.auth.exception.AuthExceptionHandler;
 import org.talend.daikon.spring.auth.exception.TalendBearerTokenAuthenticationEntryPoint;
 import org.talend.daikon.spring.auth.interceptor.BearerTokenInterceptor;
 import org.talend.daikon.spring.auth.interceptor.IpAllowListHeaderInterceptor;
@@ -156,6 +158,13 @@ public class AuthAutoConfiguration {
     }
 
     // exception handling
+
+    @Bean
+    @ConditionalOnProperty(value = "spring.security.oauth2.resourceserver.exception-handler.enabled", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnMissingBean(AuthExceptionHandler.class)
+    public AuthExceptionHandler authExceptionHandler() {
+        return new AuthExceptionHandler();
+    }
 
     @Bean
     @ConditionalOnMissingBean(TalendBearerTokenAuthenticationEntryPoint.class)

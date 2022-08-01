@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-@ConditionalOnProperty(value = "spring.security.oauth2.resourceserver.exception-handler.enabled", havingValue = "true", matchIfMissing = true)
 public class AuthExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthExceptionHandler.class);
