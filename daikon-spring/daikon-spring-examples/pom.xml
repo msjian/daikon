@@ -4,14 +4,14 @@
     <parent>
         <groupId>org.talend.daikon</groupId>
         <artifactId>daikon-spring</artifactId>
-        <version>6.8.5-SNAPSHOT</version>
+        <version>6.8.6-SNAPSHOT</version>
     </parent>
 
     <artifactId>daikon-spring-examples</artifactId>
     <packaging>pom</packaging>
     <name>Examples using Daikon spring related modules.</name>
     <url>https://github.com/Talend/daikon</url>
-    <version>6.8.5-SNAPSHOT</version>
+    <version>6.8.6-SNAPSHOT</version>
 
     <modules>
         <module>daikon-spring-example-security</module>

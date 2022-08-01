@@ -1,0 +1,9 @@
+= Daikon Release Notes (6.8.5) - 07/28/2022
+
+Thanks to @C​⁠‌​⁠⁠‌​﻿​⁠‍‌‌​​‍‌yprien Q​⁠‌​⁠⁠‌​﻿​⁠‍‌‌​​‍‌uilici, @Axel MAUMONT
+
+== Feature
+- link:https://jira.talendforge.org/browse/TDP-10523[TDP-10523]: [RunConv] Use filters with advanced criteria (pattern & word compliance) (link:https://github.com/Talend/daikon/pull/835[#835])
+
+== Work Item
+- link:https://jira.talendforge.org/browse/TDP-10831[TDP-10831]: [RunConv][Back] TQL-DSEL convertor API (link:https://github.com/Talend/daikon/pull/872[#872])
