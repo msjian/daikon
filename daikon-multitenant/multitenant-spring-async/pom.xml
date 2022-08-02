@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.talend.daikon</groupId>
         <artifactId>daikon-multitenant</artifactId>
-        <version>6.8.6-SNAPSHOT</version>
+        <version>6.8.7-SNAPSHOT</version>
     </parent>
     <artifactId>multitenant-spring-async</artifactId>
     <packaging>jar</packaging>

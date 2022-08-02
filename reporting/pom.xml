@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>org.talend.daikon</groupId>
 		<artifactId>daikon-parent</artifactId>
-		<version>6.8.6-SNAPSHOT</version>
+		<version>6.8.7-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>reporting</artifactId>
-	<version>6.8.6-SNAPSHOT</version>
+	<version>6.8.7-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Aggregation of jacoco reports</name>

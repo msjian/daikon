@@ -1,0 +1,9 @@
+= Daikon Release Notes (6.8.6) - 08/01/2022
+
+Thanks to @Mark Butko, @Gabriel Marquet
+
+== Work Item
+- link:https://jira.talendforge.org/browse/TPSVC-18739[TPSVC-18739]: Replace oidc-client with daikon-spring-auth in IAM services (link:https://github.com/Talend/daikon/pull/875[#875])
+
+== Other
+- Update semgrep.yml  (link:https://github.com/Talend/daikon/pull/876[#876])

@@ -19,11 +19,11 @@
     <parent>
         <groupId>org.talend.daikon</groupId>
         <artifactId>daikon-parent</artifactId>
-        <version>6.8.6-SNAPSHOT</version>
+        <version>6.8.7-SNAPSHOT</version>
     </parent>
 
     <artifactId>daikon-i18n</artifactId>
-    <version>6.8.6-SNAPSHOT</version>
+    <version>6.8.7-SNAPSHOT</version>
     <name>Daikon :: i18n</name>
 
     <properties>
